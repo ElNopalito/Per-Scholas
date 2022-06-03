@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+</head>
+<body>
+    <h1> <%= pageHeader %> </h1>
+<!----------------------------------Pokemon data pulled from pokemon.js file--------------------------------------------------------------------------------------->
+<!-----------We are using dot notation to get the information from pokemon.js. We then are going to use dot notation within an li to summon the full list of names from the pokemon.js-->
+<!-----------------Refer to 6/2 @ 1:02:25---------------------------------------->    
+<ul>
+        <% pokemonData.map(pokemon =>{ %>
+            <li><%= pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) %></li>
+     <%    })     %>
+    </ul>
+</body>
+</html>
