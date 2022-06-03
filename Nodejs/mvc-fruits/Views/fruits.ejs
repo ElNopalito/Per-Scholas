@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-----This is EJS syntax <%= %>-->
+    <title> <%= pageTitle %></title>
+</head>
+<body>
+    <h1>Fruits Page</h1>
+    <!-----Linking Home Page to Fruits page-->
+    <!---<a href="/">Go to home</a>----->
+
+    <!----Method to draw array of data-->
+    <!-----Making li of fruits-->
+    <ul>
+            <% data.map( (fruit, index) => { %>
+                    <li>
+                        <%= fruit.name %> is
+                        <%= fruit.color %> and is 
+                        <%= fruit.readyToEat ? 'Ready': 'Not Ready'%> to eat
+                    </li>
+            <% } ) %>
+   </ul>
+</body>
+</html>
