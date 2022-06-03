@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body></body>
+    <div class="starks">
+    </div>
+    <button id="add-child"></button>
+    <button id="red-wedding"></button>
+</body>
+<script>
+// Create new element -> starkChild
+ const starksdiv = document.querySelector('starks') // This calls upon div class 'starks'
+ // Create Two Functions -> addChild and redWedding
+function addchild(){
+    const starkChild = document.createElement('div')
+    starkChild.className = ('child')
+    starkChild.textContent = 'Child'
+    starksdiv.appendChild(starkChild)
+}
+
+function redwedding(){
+const starkChildren = document.querySelector('child')
+starkChildren.foreach(child => child.remove())
+}
+// Attach functions to buttons
+
+const addButton = document.getElementById('add-child')
+addButton.addEventListener('click, addChild')
+
+const subButton = document.getElementById('red-wedding')
+subButton.addEventListener('click, redWedding')
+// The addChild function creates new div & appends it to the starks div
+
+// The redWedding function removes ALL stark children (loop)
+</script>
+</html>

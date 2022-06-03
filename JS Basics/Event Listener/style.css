@@ -1,0 +1,6 @@
+#box{
+    border: solid 5px red;
+    width: 400px; 
+    height: 400px;
+    margin-top: 100px;
+}

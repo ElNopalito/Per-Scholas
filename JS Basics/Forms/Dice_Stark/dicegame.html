@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Game</title>
+  </head>
+  <style>
+      .winner {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 28px;
+          font-family: 'Courier New', Courier, monospace;
+          font-weight: 400;
+      }
+      body {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 20px;
+      }
+  </style>
+  <body>
+    <div id="winner" class="winner">Dice Game</div>
+    <div class="btns">
+        <button id="play-game">PLAY!</button>
+        <button id="reset">RESET!</button>
+    </div>
+    <script>
+     
+        //================ Task 1 ==============================
+        // Create a function (rollDice)
+        let player
+        let computer
+        let winner
+
+        function rollDice(){
+          player = Math.floor(Math.random()*6);
+          computer = Math.floor(Math.random()*6);
+          player > computer ?  console.log('Player Wins'): console.log('Computer Wins');
+          return [player, computer,winner]
+        }
+        
+        console.log(rollDice);
+        
+          
+      
+         const playButton = document.getElementById('play-game')
+         playButton.addEventListener('click', rollDice)
+
+         const resetButton = document.getElementById('reset')
+         resetButton.addEventListener('click', resetButton)
+
+        // console.log("PLAYER WINS")
+        // otherwise, log ("COMPUTER WINS")
+        // Use a ternary to check for the winner
+        // ----- After testing it, remove the console.log()
+        // leaving just the string "PLAYER WINS" or "COMPUTER WINS" and save it to a variable (winner)
+        // FINALLY: return all three variables using an array
+        // return [VALUE1, VALUE2, VALUE3]
+       
+
+      // ============ Task 2 ==============================
+      // Let's update our UI (User Interface)
+      // Create a function (displayScore)
+      function displayScore(){
+       const newDiv = document.createElement('div') 
+      }
+      // Create a new a div displaying:
+      // Computer Score: , Player Score:  & the Winner:
+      // so there is a running record of game data.
+      // Append the new div to the parent div on the HTML.
+   
+
+      // Create a Reset Function (resetGame)
+      function resetGame(){
+
+      }
+      // REMOVE the div with the game score, leaving just the parent div
+      // creating a clean slate for a new set of games :
+      // ==== Final Step =====================
+      // Create a new function (playGame):
+      
+      // Call the rollDice and the displayScore function inside this function
+
+      // ========= Don't forget to add your events listeners
+      // Attach the (playGame) function to the play game button
+      // Attach the (resetGame) function to the reset button
+
+      // ===== Now let's host this game in GITHUB PAGES and style it !!!
+    </script>
+  </body>
+
+</html>
