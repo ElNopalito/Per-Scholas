@@ -15,7 +15,7 @@ app.get('/', (req,res) => {
     res.send('Welcome to the Pokemon App')
 })
 //! We are setting up our Pokemon server. We can have as many servers as needed. We are res.send the array that was on pokemon.js. 
-app.get('/pokemon',(req,res)=>{
+app.get('/pokemon', (req,res) => {
     res.send(pokemonData)
 })
 //! After app.get will be app.listen. Basically it will listen a act as a return function. So when app.get function is trriggered, the app.listen function will trigger too. Usually it will have console.log(`Server is running on ${PORT})
