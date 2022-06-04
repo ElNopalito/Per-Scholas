@@ -12,6 +12,10 @@ const app = express()
 //! This is the port our local host will run on. If something is not working correctly, just set it 3001,3002,etcetc until it works.
 const PORT = 3000
 
+//!Middleware
+//! Ask Abe about this
+app.use(express.json());
+app.use(express.urlencoded({extended: false}))
 
 //!------------------------------------------------------Setting ejs files. This is what will apear on frontend instead of HTML/CSS------------------------------------------
 
