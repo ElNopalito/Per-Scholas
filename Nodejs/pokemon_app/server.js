@@ -1,23 +1,30 @@
 //!---------------------------------------------------------------------Setting variables-------------------------------------------------------
 
 //! We are importing express by using the require operator
-const express = require('express')
+const express = require('express');
 
-//!We are grabbing pokemon.js and installing in the server.js. Remember: server.js is your main module that controls the entire network. Any time you want to mainipulate or add the network, do it on server.js
-const pokemonData = require('./Models/pokemon')
+//!We are grabbing pokemon.js and installing in the server.js. Remember: server.js is your main module that controls the entire network. Any time you want to manipulate or add the network, do it on server.js
+const pokemonData = require('./Models/pokemon');
 
 //! We are setting app to the express variable
-const app = express()
+const app = express();
 
 //! This is the port our local host will run on. If something is not working correctly, just set it 3001,3002,etcetc until it works.
-const PORT = 3000
+const PORT = 3000;
+
+//! We are importing the env file using require and testing with console.log
+require('dotenv').config()
+//console.log(process.env.MONGODB_URI);
+
+//! Importing mongoose using require
+const mongoose = require('mongoose')
 
 //!Middleware
 //! Ask Abe about this
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 
-//!------------------------------------------------------Setting ejs files. This is what will apear on frontend instead of HTML/CSS------------------------------------------
+//!------------------------------------------------------Setting ejs files. This is what will appear on frontend instead of HTML/CSS------------------------------------------
 
 app.set('view engine', 'ejs')
 app.set('views', './Views')
@@ -73,7 +80,10 @@ app.get('/pokemon/:id', (req, res) => {
 
 //!-------------------------------------------------------------Server Response------------------------------------------------------------------------------------------------------
 
-//! After app.get will be app.listen. Basically it will listen a act as a return function. So when app.get function is trriggered, the app.listen function will trigger too. Usually it will have console.log(`Server is running on ${PORT})
+//! After app.get will be app.listen. Basically it will listen a act as a return function. So when app.get function is triggered, the app.listen function will trigger too. Usually it will have console.log(`Server is running on ${PORT})
+//! We are also connecting Mongoose using dot notation.
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
-})
+    mongoose.connect(process.env.MONGODB_URI);
+    console.log('Mongoose connected');
+}) 
