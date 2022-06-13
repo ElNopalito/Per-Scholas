@@ -1,5 +1,7 @@
+//!---------------------------------------------Using Mongoose to configure our Schema---------------------------------------------------
 const mongoose = require('mongoose')
 
+//! Mongoose will look at your Schema and document what is required. If you try to input in Postman without all required details, it will come up as an error.
 const todoSchema = mongoose.Schema({
     title: {
         type : String,
@@ -12,6 +14,7 @@ const todoSchema = mongoose.Schema({
     },
 
     completed: {
+        type: Boolean,
         default: false
     },
 
