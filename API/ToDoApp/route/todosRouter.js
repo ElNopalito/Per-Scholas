@@ -53,7 +53,7 @@ router.put('/:id', async (req,res) => {
     const newtodoData = req.body
     try {
         const todo = await todoModel.findByIdAndUpdate(id, newtodoData)  //! Going to find ID and update
-        res.status().json(todo)
+        res.status(202).json(todo)
     } catch(error){
         console.log(error);
     }
@@ -61,10 +61,10 @@ router.put('/:id', async (req,res) => {
 
 //! Deleting a Todo by ID
 router.delete('/:id', async (req,res) => {
-    const od = req.params.id
+    const id = req.params.id
 
     try {
-        const todo = await todoModel.findByIdAndDelete
+        const todo = await todoModel.findByIdAndDelete(id)
         res.status(200).json({msg: 'Todo was deleted'})
     } catch (error) {
         console.log(error);
