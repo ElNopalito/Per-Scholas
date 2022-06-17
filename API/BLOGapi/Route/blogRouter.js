@@ -3,7 +3,18 @@ const express = require('express');
 const router = express.Router();
 
 const blogModel = require('../Models/blogSchema');
+//! Get
+router.get('/', async (req, res) => {
 
+    try {
+        const blog = await blogModel.find()
+        res.status(201).json(blog)
+    } catch (error) {
+        console.log(error)
+    }
+ });
+
+//! Post
 router.post('/', async (req,res) => {
     const blogData = req.body
 
@@ -16,10 +27,11 @@ router.post('/', async (req,res) => {
     }
 });
 
-router.get('/:blog', async (req,res) => { 
-    const blog = req.params.id
+//! Get by ID
+router.get('/:id', async (req,res) => { 
+    const id = req.params.id
     try {
-        const todo = await todoModel.findById(blog)
+        const blog = await blogModel.findById(id)
         res.status(200).json(blog)
     } catch (error) {
         console.error(error);
@@ -27,11 +39,12 @@ router.get('/:blog', async (req,res) => {
     }
 });
 
-router.put('/:blog', async (req,res) => {
-    const blog = req.params.id
+//! Update by ID
+router.put('/:id', async (req,res) => {
+    const id = req.params.id
     const newBlogData = req.body
     try {
-        const todo = await todoModel.findByIdAndUpdate(blog, newBlogData)  //! Going to find ID and update
+        const blog = await blogModel.findByIdAndUpdate(id, newBlogData)  //! Going to find ID and update
         res.status(202).json(blog)
     } catch(error){
         console.log(error);
@@ -39,11 +52,12 @@ router.put('/:blog', async (req,res) => {
     }
 });
 
-router.delete('/:blog', async (req,res) => {
-    const blog = req.params.id
+//! Delete by ID
+router.delete('/:id', async (req,res) => {
+    const id = req.params.id
 
     try {
-        const blog = await blogModel.findByIdAndDelete(blog)
+        const blog = await blogModel.findByIdAndDelete(id)
         res.status(200).json({msg: 'Blog was deleted'})
     } catch (error) {
         console.log(error);
