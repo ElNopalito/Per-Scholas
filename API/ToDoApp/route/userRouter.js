@@ -11,39 +11,23 @@ const userModel = require('../Models/userSchema');
 router.post('/', [
     check('username', "Username is required!").notEmpty(),
     check("email", "Please use valid email").isEmail(),
-    check("password", 'Please enter a password').notEmpty(),
-    check('password', 'Please enter a password with 6 or more characters').isLength({min:6}),
-  
-] ,async (req,res) => {
+const express = require('express');
+
+const router = express.Router();
+
+const userModel = require('../Models/userSchema');
+
+router.post('/', async (req,res) => {
     const userData = req.body
-    const error = validationResult(req)
-  
-    if (!error.isEmpty()) {                         //! By putting an "!", we are checking the opposite logic so !error.isEmpty = NOT EMPTY
-       return res.json(error.array())                     //! Will tell you what error is in POSTMAN and using return will STOP the app at this function
-    }
 
     try {
-
-            //!Making sure users with same emails don't duplicate 
-         const userExist = await userModel.findOne({email: userData.email});
-         
-         if (userExist){
-            return res.json({msg: 'User already exist'})
-         }
-
-        //! salt rounds
-        const saltRounds = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(userData.password, saltRounds)
-        console.log(hashedPassword);
-        userData.password = hashedPassword
-
         const user = await userModel.create(userData)
         res.status(201).json(user)
     } catch (error) {
         console.log(error);
-        res.status(400).json('TRY AGAIN')
+        res.status(400).json("Nah, didn't work")
     }
-})
+});
 
 router.get('/', async (req,res) => {
     try {
@@ -53,6 +37,41 @@ router.get('/', async (req,res) => {
         console.log(error);
         res.status(400).json('TRY AGAIN')
     }
-})
+});
+
+router.get('/:id', async (req,res) => {
+    const id = req.params.id
+    try {
+        const user = await userModel.findById(id)
+        res.status(200).json(user)
+    } catch (error) {
+        console.log(error);
+        res.status(400).json('TRY AGAIN')
+    }
+});
+
+router.put('/:id', async (req,res) => {
+    const id = req.params.id
+    const newUserData = req.body
+
+    try {
+        const user = await userModel.findById(id)
+        res.status(200).json(user)
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({msg: 'ID not found!'})    }
+});
+
+router.delete('/:id', async (req,res) => {
+    const id = req.params.id
+
+    try {
+        const user = await userModel.findByIdAndDelete(id)
+        res.status(200).json({msg: 'User was deleted'})
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({msg: 'Unable to delete'})
+    }
+});
 
 module.exports = router
