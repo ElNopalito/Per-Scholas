@@ -7,6 +7,7 @@ const {check, validationResult} = require('express-validator');
 
 const userModel = require('../Models/userSchema');
 
+
 router.post('/', [
     check('username', "Username is required!").notEmpty(),
     check("email", "Please use valid email").isEmail(),
@@ -22,6 +23,14 @@ router.post('/', [
     }
 
     try {
+
+            //!Making sure users with same emails don't duplicate 
+         const userExist = await userModel.findOne({email: userData.email});
+         
+         if (userExist){
+            return res.json({msg: 'User already exist'})
+         }
+
         //! salt rounds
         const saltRounds = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(userData.password, saltRounds)
