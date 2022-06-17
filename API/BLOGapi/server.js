@@ -14,7 +14,7 @@ const userRouter = require('./Route/userRouter');
 const blogRouter = require('./Route/blogRouter');
 
 app.use(express.json());
-app.use('Blog', blogRouter);
+app.use('/Blog', blogRouter);
 app.use('/User', userRouter);
 //!----------------------------------------MAIN SERVER------------------------------------- 
 app.get('/blog', (req,res) => {
