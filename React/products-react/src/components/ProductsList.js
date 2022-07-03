@@ -16,12 +16,12 @@ import ProductItem from "./ProductItem";
 
 //! Naming all products in array to show on page
 const ProductsList = (props) =>{
-    console.log(props.product);
+    console.log(props.products);
     return(
         <div>
             <h2>Products</h2>
             {    
-                props.product.map(product => <ProductItem product={product} />)}
+                props.products.map(product => <ProductItem product={product} />)}
         </div>
     )
 }
