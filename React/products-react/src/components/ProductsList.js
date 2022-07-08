@@ -1,6 +1,6 @@
 import React from "react";
-import products from "../data/productsData";
 import ProductItem from "./ProductItem";
+
 
 //! We are using props as an arguement in this function. To check, we log props.product and check console to make sure it has an array. In app.js, we named our key to products.
 // const ProductsList = (props) =>{
@@ -21,7 +21,8 @@ const ProductsList = (props) =>{
         <div>
             <h2>Products</h2>
             {    
-                props.products.map(product => <ProductItem product={product} />)}
+                props.products.map((product, idx) => <ProductItem item={product} key={idx} />)
+            }
         </div>
     )
 }
