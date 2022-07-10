@@ -51,9 +51,9 @@ class App extends Component {
   }
 
 //!----------------------------------------------------------------Adding Items to Shopping Cart------------------------------------------------------------
-addToCart = (item) => {
-  console.log(item);
-  // this.setState({shoppingCartItems: [item, ...this.stateCartItems]})
+addToCart = (product) => {
+  console.log(product);
+  this.setState({shoppingCartItems: [product, ...this.state.shoppingCartItems]})
 }
 //!----------------------------------------------------------------What shows in browser--------------------------------------------------------------------
   render(){
@@ -76,4 +76,7 @@ addToCart = (item) => {
     );
   }
 }
+export default App
+
+
 export default App
