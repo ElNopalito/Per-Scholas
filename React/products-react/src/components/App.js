@@ -3,7 +3,7 @@ import { Component } from 'react';
 import Navbar from './Navbar';
 import ProductsList from './ProductsList';
 import productsData from '../data/productsData';
-
+import Form from './Form';
 //!-----------------------------------------------------------------Main App Component--------------------------------------------------------------
 class App extends Component { 
 //! A state is a built-in React object that is used to contain data or information about the component. We would presumably use state because different Components may serve many different functions.
@@ -13,9 +13,9 @@ class App extends Component {
     //! In ES6 syntax, if the key and value are the same, you can just input the key without having to input value 
     //! A Component can only have 1 state but can have multiple information in the state. 
     productsData: productsData,
-    productName: '',
+    productName: '' ,
     productPrice: 0,
-    productDescription: '',
+    productDescription: ''
     //! Because state re-renders information in a components, we need to set the value of the input box in state. Whatever we input in state will show in value box. THIS IS NOT LONGER NEEDED AS WE ARE USING SETSTATE METHOD
     // value: ''
   }
@@ -34,7 +34,8 @@ class App extends Component {
     const newProduct = {
       name: this.state.productName,
       price: this.state.productPrice,
-      description: this.state.productDescription
+      description: this.state.productDescription,
+      inStock: true
     }
     console.log(newProduct);
     //! We are updating the array by creating another array to add to productsData array. When we input information, it will create another array to add to productsData
@@ -51,20 +52,14 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <form onSubmit={this.handleSubmit}>
-        <label htmlFor='productName'>Product Name</label>
-        {/* To connect to state, you use this.state.whateveryou'reconnecting*/}
-        {/*onChange allows us to calls on handleChange which allows state to render the page when something is inputed*/}
-        <input type = "text" value = {this.state.value} onChange = {this.handleChange} id='productName' />
-
-        <label htmlFor='productPrice'>Product Price</label>
-        <input type='number' value = {this.state.productPrice} onChange = {this.handleChange} id ='productPrice'></input>
-
-        <label htmlFor='productDescription'> Product Description </label>
-        <input type = 'text' value = {this.state.productDescription} onChange = {this.handleChange} id ='productDescription'></input>
-
-        <input type = 'submit' />
-        </form>
+          {/* This form was originally hardcoded in the App component. However, we created a Form component and moved the information there. But because handleChange and handleSubmit are not  global methods, they would not be in the Form.js file. To render them, we manipulate it here in the Form component within the App component using state.*/}
+       <Form 
+        handleSubmit = {this.handleSubmit}
+        handleChange = {this.handleChange}
+        productName = {this.state.productName}
+        productPrice = {this.state.productPrice}
+        productDescription = {this.state.productDescription} 
+        />
           {/* We are importing productsData and passing it to the App component with the ProductsList component. To do so, we must create a key name and in brackets{}, we pass in productsData*/}
         <ProductsList products={this.state.productsData} />
       </div>
