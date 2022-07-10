@@ -15,13 +15,26 @@ import ProductItem from "./ProductItem";
 // }
 
 //! Naming all products in array to show on page
-const ProductsList = (props) =>{
-    console.log(props.products);
+const ProductsList = (props) => {
+    // console.log(props.products);
     return(
         <div>
             <h2>Products</h2>
             {    
-                props.products.map((product, idx) => <ProductItem item={product} key={idx} />)
+                // props.products.map((product, idx) => <ProductItem item={product} key={idx} />)
+            }
+            {/*Using Tenerary operator(if/else) where if the item is inStock(check productData). If not, it will render product.name is out of stock in an h3*/}
+             {/* {
+                props.products.map( (product, idx) => product.inStock ? (
+                     <ProductItem item={product} key={idx}/>
+                     ) : 
+                     ( 
+                     <h3> key={idx} {product.name} is out of stock</h3>
+                     )
+                     )} */}
+            {/* Double End Operator. On either side of the operator, both statements must be true. If one statement is not, the item will not show on list*/ }
+            {
+                props.products.map( (product, idx ) => product.inStock  && <ProductItem item={product} key={idx} />)
             }
         </div>
     )
