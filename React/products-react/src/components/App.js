@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import ProductsList from './ProductsList';
 import productsData from '../data/productsData';
 
-
+//!-----------------------------------------------------------------Main App Component--------------------------------------------------------------
 class App extends Component { 
 //! A state is a built-in React object that is used to contain data or information about the component. We would presumably use state because different Components may serve many different functions.
 //! State is also able to re-render an application if any information within the state is updated in any way
@@ -19,13 +19,14 @@ class App extends Component {
     //! Because state re-renders information in a components, we need to set the value of the input box in state. Whatever we input in state will show in value box. THIS IS NOT LONGER NEEDED AS WE ARE USING SETSTATE METHOD
     // value: ''
   }
+//!------------------------------------------------------------------Where state will re-render in browser----------------------------------------------------
 //! Because our state is static, it would be annoying to have to change it directly, this function acts like an event listener.
   handleChange = (event) => {
     //! This is like an eventlistener, just with different syntax
     console.log(event.target.value);
     this.setState({ [event.target.id] : event.target.value})
   }
-
+//!-----------------------------------------------------------------Where State will append information to current list/array---------------------------------------
   //! This method will allow the state to refresh the page with the values we inputed in the form in the console.
   handleSubmit = (event) => {
     event.preventDefault();
@@ -37,11 +38,15 @@ class App extends Component {
     }
     console.log(newProduct);
     //! We are updating the array by creating another array to add to productsData array. When we input information, it will create another array to add to productsData
-    this.setState({productsData: [...this.state.productsData, newProduct]})
+    this.setState({
+    productsData: [...this.state.productsData, newProduct],
+    productName: '',
+    productPrice: 0,
+    productDescription: ''  })
   }
 
 
-
+//!----------------------------------------------------------------What shows in browser--------------------------------------------------------------------
   render(){
     return (
       <div className="App">
