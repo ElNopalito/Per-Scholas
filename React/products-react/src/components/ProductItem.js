@@ -13,13 +13,15 @@ import React from "react";
 //! Instead of using dot notation like above where we would have to call upon each property, we can use destructuring.
 const ProductItem = (props) => {
     const {name, price, description} = props.product
+
     return (
-        <div>
+        <div onClick={() => props.addToCart(props.product)}>
         <h3>{name}</h3>
         <h3>$ {price}</h3>
-        <p> {description} </p>
+        <p>{description}</p>
     </div>
     )
 }
 
 export default ProductItem
+
