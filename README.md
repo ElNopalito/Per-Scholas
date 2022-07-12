@@ -1,7 +1,7 @@
 # Per-Scholas
 
-Hey, glad you could stop by! This is a compilation of notes from my Per Scholas Software Engingeering bootcamp course. In this repo you'll find a variety of folders and files that contain some HTML/CSS notes but mostly Javascript/Node.js/API/React notes.
+This repository contains notes from Per Scholas Software Engineering Cohort Cycle #13. These notes contain front-end & back-end development tools and application. These applications include HTML/CSS/JavaScript/Node.js/MongoDB/Postman/React.
 
-I usually annotate using //! and would recommend you download the 'Better Comments' ext on VScode as it makes all my comments bright red so you can't miss them. 
+Notes are annotated using //! and it is recommended to download the 'Better Comments' ext on VScode as it makes all comments bright red and will increase visibility.
 
-If you choose to follow along with my code, you'll notice that a lot of my code is commented out with '//'. This is so that I can keep them for examples for later but they would interfere with other code examples. If you'd like, just highlight which code you'd like to see in action and press ctrl+/ to un-comment. 
+Some code will be commented out to prevent inteference from redundancy while still being able to keep and refer back to. 
