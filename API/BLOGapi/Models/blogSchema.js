@@ -1,8 +1,7 @@
-const { kStringMaxLength } = require('buffer')
-const mongoose = require('mongoose')
-const { stringify } = require('querystring')
+const mongoose = require('mongoose');
 
-const blogSchema = mongoose.Schema = ({
+
+const blogSchema = mongoose.Schema({
     created_by: {
         type: String,
         required: true
@@ -22,12 +21,6 @@ const blogSchema = mongoose.Schema = ({
     blog_content:{
         type: String,
         required: true
-    },
-
-    private:{
-        type: Boolean,
-        required: true
-    }
-})
+}})
 
 module.exports = mongoose.model('Blog', blogSchema)
